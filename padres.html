@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de los padres — RAG</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="barra">
+    <div class="contenedor">
+      <a class="marca" href="index.html"><span class="marca-logo">RAG</span> <span class="marca-texto">Panel de los padres</span></a>
+      <nav aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="chat.html">Chat</a>
+        <a href="padres.html" aria-current="page">Padres</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor angosto">
+
+    <div class="estado-grande estado-espera" id="estado" role="status" aria-live="assertive">
+      Esperando a la maqueta…
+      <small>Conectando con el router</small>
+    </div>
+
+    <div class="fila-estado">
+      <span class="chip" id="chip-maqueta">
+        <span class="punto punto-gris" id="punto-maqueta"></span>
+        <span id="texto-maqueta">Buscando la maqueta…</span>
+      </span>
+      <span class="chip" id="chip-broker">
+        <span class="punto punto-gris" id="punto-broker"></span>
+        <span id="texto-broker">Conectando a internet…</span>
+      </span>
+    </div>
+
+    <button type="button" class="boton boton-rojo boton-grande" id="visto" disabled>
+      ✓ Visto — apagar alarma
+    </button>
+
+    <h2 style="margin-top:32px">Mensajes sospechosos</h2>
+    <ul class="lista-alertas" id="alertas"></ul>
+    <p class="sin-alertas" id="sin-alertas">No se detectó nada sospechoso.</p>
+
+    <div class="panel-acciones">
+      <button type="button" class="boton boton-borde" id="sonido">🔔 Activar sonido y vibración</button>
+      <button type="button" class="boton boton-borde" id="borrar">🗑️ Borrar historial</button>
+    </div>
+
+    <div class="aviso" style="margin:28px 0 40px">
+      <b>¿Llegó una alerta?</b> No borres los mensajes, hablá con calma con tu hijo o hija y pedí ayuda.
+      <a href="index.html#que-hacer">Ver qué hacer</a>.
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/mqtt-conexion.js"></script>
+  <script src="js/padres.js"></script>
+</body>
+</html>

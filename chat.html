@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat del juego — RAG</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="pagina-chat">
+
+  <header class="barra">
+    <div class="contenedor">
+      <a class="marca" href="index.html"><span class="marca-logo">RAG</span> <span class="marca-texto">Chat</span></a>
+      <nav aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="chat.html" aria-current="page">Chat</a>
+        <a href="padres.html">Padres</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="chat-caja">
+    <div class="chat-cabecera">
+      <div>
+        <div class="juego">🎮 Partida online</div>
+        <div class="sala">Sala: amigos del juego</div>
+      </div>
+      <span class="indicador" id="indicador" aria-live="polite">
+        <span class="punto punto-gris" id="indicador-punto"></span>
+        <span id="indicador-texto">Conectando…</span>
+      </span>
+    </div>
+
+    <div class="chat-lista" id="lista" aria-live="polite">
+      <p class="chat-vacio" id="vacio">Todavía no hay mensajes. ¡Escribí el primero!</p>
+    </div>
+
+    <form class="chat-form" id="formulario" autocomplete="off">
+      <label for="texto" class="oculto">Mensaje</label>
+      <input type="text" id="texto" placeholder="Escribí un mensaje…" maxlength="200" required>
+      <button type="submit" class="boton" id="enviar">Enviar</button>
+    </form>
+    <div class="contador" id="contador">0 / 200</div>
+  </main>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/mqtt-conexion.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RAG — Router Anti Grooming</title>
+  <meta name="description" content="RAG es un router inteligente que detecta frases típicas de grooming en el chat de un chico y avisa a los padres. Proyecto escolar de domótica, redes y ciberseguridad.">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="barra">
+    <div class="contenedor">
+      <a class="marca" href="index.html"><span class="marca-logo">RAG</span> <span class="marca-texto">Router Anti Grooming</span></a>
+      <nav aria-label="Principal">
+        <a href="index.html" aria-current="page">Inicio</a>
+        <a href="chat.html">Chat</a>
+        <a href="padres.html">Padres</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Portada ===== -->
+    <section class="portada">
+      <div class="contenedor">
+        <span class="etiqueta">Proyecto escolar · Domótica, redes y ciberseguridad</span>
+        <h1><span class="sigla">RAG</span> Router Anti Grooming</h1>
+        <p class="bajada">Un router inteligente que revisa los mensajes que recibe un chico en el chat de un juego. Si detecta una frase típica de grooming, prende una alarma en el cuarto de los padres y les avisa al celular.</p>
+        <div class="acciones">
+          <a class="boton boton-rojo" href="chat.html">💬 Abrir el chat del chico</a>
+          <a class="boton boton-blanco" href="padres.html">🛡️ Abrir el panel de los padres</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Qué es el grooming ===== -->
+    <section class="seccion seccion-blanca" id="grooming">
+      <div class="contenedor">
+        <h2>¿Qué es el grooming?</h2>
+        <p class="intro">Es cuando un adulto contacta a un chico o una chica por internet (juegos, redes, chats) y se gana su confianza, muchas veces haciéndose pasar por alguien de su edad, con el objetivo de abusar de él o ella. En Argentina es un delito (Ley 26.904).</p>
+        <div class="grilla">
+          <div class="tarjeta">
+            <h3>Empieza como un juego</h3>
+            <p>El groomer suele aparecer en lugares donde los chicos se sienten cómodos: partidas online, chats de juegos o redes sociales.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Busca confianza y secreto</h3>
+            <p>Regala cosas, elogia, y de a poco pide que la charla quede "entre ustedes", lejos de los adultos.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>Deja señales en el texto</h3>
+            <p>Hay frases que se repiten: pedir fotos, preguntar dónde vive, si está solo, o proponer un encuentro. RAG busca esas señales.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Cómo funciona ===== -->
+    <section class="seccion" id="como-funciona">
+      <div class="contenedor">
+        <h2>¿Cómo funciona?</h2>
+        <p class="intro">Armamos una maqueta de una casa. El "router" es un ESP32 que vigila los mensajes que pasan por la red, como haría un router de verdad.</p>
+        <div class="grilla">
+          <div class="tarjeta">
+            <span class="num">1</span>
+            <h3>El chico chatea</h3>
+            <p>Desde la <a href="chat.html">tablet del chico</a> se escriben mensajes en el chat del juego.</p>
+          </div>
+          <div class="tarjeta">
+            <span class="num">2</span>
+            <h3>El router analiza</h3>
+            <p>El ESP32 recibe cada mensaje, lo pasa a minúscula, le saca las tildes y lo compara con listas de frases de riesgo.</p>
+          </div>
+          <div class="tarjeta">
+            <span class="num">3</span>
+            <h3>Alarma en la casa</h3>
+            <p>Si encuentra algo, se apaga el LED verde, se prende el <b>LED rojo</b> y suena el <b>buzzer</b> en el cuarto de los padres.</p>
+          </div>
+          <div class="tarjeta">
+            <span class="num">4</span>
+            <h3>Aviso al celular</h3>
+            <p>En el <a href="padres.html">panel de los padres</a> aparece la alerta con el mensaje y el motivo. Con "Visto" se apaga la alarma.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Señales ===== -->
+    <section class="seccion seccion-blanca" id="senales">
+      <div class="contenedor">
+        <h2>Las 4 señales que detecta</h2>
+        <p class="intro">Cada mensaje se compara con cuatro listas de palabras. Un mismo mensaje puede caer en más de una categoría.</p>
+        <div class="grilla">
+          <div class="tarjeta tarjeta-borde-rojo">
+            <h3>🤫 Pide secreto</h3>
+            <p>Intenta aislar al chico de los adultos.</p>
+            <p class="ejemplo">"no le cuentes a tus papás", "esto queda entre nosotros", "borrá el chat"</p>
+          </div>
+          <div class="tarjeta tarjeta-borde-rojo">
+            <h3>📷 Pide fotos o cámara</h3>
+            <p>Pide imágenes, videos o prender la cámara.</p>
+            <p class="ejemplo">"mandame una foto", "prendé la cámara", "pasame un video"</p>
+          </div>
+          <div class="tarjeta tarjeta-borde-rojo">
+            <h3>🏠 Pide datos personales</h3>
+            <p>Quiere saber dónde vive, a qué escuela va o si está solo.</p>
+            <p class="ejemplo">"¿dónde vivís?", "¿a qué colegio vas?", "¿estás solo?"</p>
+          </div>
+          <div class="tarjeta tarjeta-borde-rojo">
+            <h3>📍 Propone un encuentro</h3>
+            <p>Busca pasar del mundo virtual al encuentro en persona.</p>
+            <p class="ejemplo">"veámonos", "te paso a buscar", "¿nos vemos mañana?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Conexión / Redes ===== -->
+    <section class="seccion" id="redes">
+      <div class="contenedor">
+        <h2>Cómo se conectan las partes</h2>
+        <p class="intro">La página está en GitHub Pages (internet) y la maqueta está en la casa. No se pueden hablar directo, así que usamos un <b>broker MQTT</b> como intermediario: todos publican y se suscriben a "temas", como si fuera un grupo de mensajes.</p>
+
+        <div class="diagrama" role="img" aria-label="Celular conectado por MQTT seguro al broker HiveMQ, que está conectado por MQTT al ESP32 de la maqueta">
+          <div class="nodo">
+            <div class="icono">📱</div>
+            <h3>Celular</h3>
+            <p>Página en GitHub Pages (HTTPS)</p>
+          </div>
+          <div class="flecha">
+            <span class="linea">⇄</span>
+            <span>MQTT seguro<br>wss · puerto 8884</span>
+          </div>
+          <div class="nodo nodo-centro">
+            <div class="icono">☁️</div>
+            <h3>Broker MQTT</h3>
+            <p>broker.hivemq.com<br>reparte los mensajes</p>
+          </div>
+          <div class="flecha">
+            <span class="linea">⇄</span>
+            <span>MQTT<br>TCP · puerto 1883</span>
+          </div>
+          <div class="nodo">
+            <div class="icono">🏠</div>
+            <h3>Maqueta (ESP32)</h3>
+            <p>Analiza, prende LEDs y buzzer</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:36px">Los temas MQTT</h3>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead>
+              <tr><th>Tema</th><th>Quién publica</th><th>Quién escucha</th><th>Para qué sirve</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>…/chat</code></td><td>Chat del chico</td><td>ESP32 y chat</td><td>Lleva cada mensaje escrito.</td></tr>
+              <tr><td><code>…/resultado</code></td><td>ESP32</td><td>Chat y panel</td><td>Dice si el mensaje tiene riesgo y en qué categorías.</td></tr>
+              <tr><td><code>…/estado</code></td><td>ESP32 (retenido)</td><td>Panel</td><td>Si hay alarma y si la maqueta está en línea.</td></tr>
+              <tr><td><code>…/visto</code></td><td>Panel</td><td>ESP32</td><td>Apaga la alarma.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Maqueta ===== -->
+    <section class="seccion seccion-blanca" id="maqueta">
+      <div class="contenedor">
+        <h2>La maqueta</h2>
+        <p class="intro">Componentes conectados al ESP32 dentro de la casa.</p>
+        <div class="tabla-envoltorio">
+          <table>
+            <thead><tr><th>Componente</th><th>Pin</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td><span class="punto punto-rojo"></span>LED rojo</td><td>GPIO 25</td><td>Prendido mientras haya alarma.</td></tr>
+              <tr><td><span class="punto punto-verde"></span>LED verde</td><td>GPIO 26</td><td>Prendido cuando todo está en orden.</td></tr>
+              <tr><td><span class="punto punto-amarillo"></span>LED amarillo</td><td>GPIO 33</td><td>Parpadea al llegar cada mensaje y mientras se conecta.</td></tr>
+              <tr><td>🔊 Buzzer</td><td>GPIO 27</td><td>Suena intermitente mientras haya alarma.</td></tr>
+              <tr><td>🔘 Botón "Visto"</td><td>GPIO 14</td><td>Apaga la alarma desde la maqueta.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Ciberseguridad ===== -->
+    <section class="seccion" id="seguridad">
+      <div class="contenedor">
+        <h2>Ciberseguridad en el proyecto</h2>
+        <p class="intro">Además de detectar grooming, tuvimos en cuenta cómo proteger el propio sistema.</p>
+        <div class="grilla">
+          <div class="tarjeta">
+            <h3>🔒 Conexión cifrada</h3>
+            <p>La página se conecta al broker por WebSocket con TLS (<code>wss://</code>), así nadie en el medio puede leer el tráfico del celular.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>🧱 Sin inyección de código</h3>
+            <p>Los mensajes se muestran siempre como texto (<code>textContent</code>, nunca <code>innerHTML</code>). Si alguien escribe código, no se ejecuta.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>✂️ Límite de largo</h3>
+            <p>Cada mensaje tiene como máximo 200 caracteres, tanto en la página como en el ESP32.</p>
+          </div>
+          <div class="tarjeta">
+            <h3>📡 Aviso de desconexión</h3>
+            <p>El ESP32 deja un "último deseo" (Last Will) en el broker: si se apaga o pierde internet, el panel muestra "Maqueta desconectada".</p>
+          </div>
+        </div>
+        <div class="aviso" style="margin-top:20px">
+          <b>Limitación (y lo que haríamos en un producto real):</b> usamos un broker público y abierto, así que cualquiera que conozca el nombre del tema podría leer los mensajes. Para una demo escolar está bien porque no usamos datos reales. Un producto de verdad usaría un broker privado con usuario y contraseña.
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Qué hacer ===== -->
+    <section class="seccion seccion-blanca" id="que-hacer">
+      <div class="contenedor">
+        <h2>Si pasa en la vida real</h2>
+        <div class="aviso aviso-rojo">
+          <ul>
+            <li><b>No borres nada:</b> guardá capturas de los mensajes, el nombre de usuario y la fecha. Son pruebas.</li>
+            <li><b>No culpes al chico:</b> hablá con calma. La víctima nunca tiene la culpa.</li>
+            <li><b>No enfrentes al acosador</b> ni le avises: cortá el contacto y bloquealo después de guardar las pruebas.</li>
+            <li><b>Pedí ayuda y denunciá:</b> Línea 137 (violencia familiar y sexual) o Línea 102 (derechos de chicos y adolescentes), o en la comisaría o fiscalía más cercana.</li>
+          </ul>
+        </div>
+        <div class="acciones" style="margin-top:28px">
+          <a class="boton boton-rojo" href="chat.html">💬 Probar el chat</a>
+          <a class="boton boton-borde" href="padres.html">🛡️ Ver el panel de los padres</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p><b>RAG — Router Anti Grooming</b> · Proyecto escolar de Informática</p>
+      <p>Esta es una maqueta educativa: no reemplaza el diálogo ni el acompañamiento de los adultos.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
